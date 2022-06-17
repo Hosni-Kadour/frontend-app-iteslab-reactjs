@@ -1,4 +1,4 @@
-FROM node:10 as build-stage
+FROM node:16 as build-stage
 
 
 WORKDIR /app
@@ -12,15 +12,10 @@ RUN npm install
 
 COPY . .
 
-
-
-
 EXPOSE 3000
 
 CMD [ "npm","start" ]
-FROM nginx
 
-COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 
 
