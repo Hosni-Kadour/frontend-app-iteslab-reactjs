@@ -91,6 +91,7 @@ function App() {
             <Route index element={<Form />} />
             <Route exact path="/people" element={<People />} />
           </Routes>
+          
         </BrowserRouter>
   );
 

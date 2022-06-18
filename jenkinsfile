@@ -8,12 +8,18 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git([url: 'https://github.com/hosnikadour1/frontend-app-iteslab-reactjs.git', branch: 'main', credentialsId: 'github'])
+        git([url: 'https://github.com/hosnikadour1/frontend-app-iteslab-reactjs.git', branch: 'main', credentialsId: 'github-frontend'])
  
       }
     }
 
-      
+       stage('Prune Docker data') {
+      steps {
+        sh 'docker system prune -a --volumes -f'
+        sh 'docker image prune'
+        
+      }
+    }
     stage('Building image') {
       steps{
         script {
@@ -26,7 +32,7 @@ pipeline {
         script {
           docker.withRegistry( '', registryCredential ) {
             dockerImage.push("$BUILD_NUMBER")
-             dockerImage.push('latest')  
+              dockerImage.push('latest') 
             
         }
         }

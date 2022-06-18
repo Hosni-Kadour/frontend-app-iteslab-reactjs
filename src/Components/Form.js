@@ -1,6 +1,7 @@
 import axios from "axios";
 import {useNavigate} from 'react-router-dom'
 import {useEffect, useState} from 'react'
+import { Snackbar,Alert,AlertTitle } from "@mui/material";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -33,6 +34,7 @@ function Copyright(props) {
 }
 
 function Form() {
+  const [modified, setModified] = useState(false);
   const [person,setPerson] = useState({firstName:'',lastName:'',CIN:''})
   const [people,setPeople] = useState()
   useEffect(()=>{
@@ -43,6 +45,7 @@ function Form() {
     setPerson({firstName:'',lastName:'',CIN:''})
   }
   const handleSubmit = (event) => {
+    setModified(true)
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     axios.post("http://localhost:4000/people",person)
@@ -125,6 +128,18 @@ function Form() {
   </Box>
 </Box>
 <Copyright sx={{ mt: 8, mb: 4 }} />
+{modified && (
+          <Snackbar
+            open={modified}
+            autoHideDuration={5000}
+            onClose={() => setModified(false)}
+          >
+            <Alert severity="success">
+              <AlertTitle></AlertTitle>
+              Your update was succed — <strong>check it out!</strong>
+            </Alert>
+          </Snackbar>
+        )}
 </Container>
   );
 
