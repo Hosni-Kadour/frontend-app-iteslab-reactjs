@@ -6,12 +6,7 @@ pipeline {
   }
   agent any
   stages {
-    stage('Cloning Git') {
-      steps {
-        git([url: 'https://github.com/hosnikadour1/frontend-app-iteslab-reactjs.git', branch: 'main', credentialsId: 'github-frontend'])
- 
-      }
-    }
+   
 
        stage('Prune Docker data') {
       steps {
