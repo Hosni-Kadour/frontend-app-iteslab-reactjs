@@ -1,4 +1,4 @@
-FROM node:16 as build-stage
+FROM node:16 as build
 
 
 WORKDIR /app
@@ -15,7 +15,6 @@ COPY . .
 EXPOSE 3000
 
 CMD [ "npm","start" ]
-
 
 
 
