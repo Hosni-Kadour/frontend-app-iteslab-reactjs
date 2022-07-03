@@ -30,12 +30,8 @@ pipeline {
         
       }
     }
-  stage("kubernetes deployment"){
-      sh 'kubectl apply -f client-app-deployment.yml'
-     }
-    }
   }
-  
+  }
          
     
 
