@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-app-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client-app
+  template:
+    metadata:
+      labels:
+        app: client-app
+    spec:
+      containers:
+      - image: hosnikadour/frontend-app-iteslab:latest
+        name: container1
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-service
+spec:
+  selector:
+    app: client-app
+    type: loadBalancer
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000
+  

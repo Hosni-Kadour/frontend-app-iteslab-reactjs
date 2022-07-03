@@ -6,8 +6,6 @@ pipeline {
   }
   agent any
   stages {
-   
-
        stage('Prune Docker data') {
       steps {
         sh 'docker system prune -a --volumes -f'
@@ -26,17 +24,24 @@ pipeline {
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
-            dockerImage.push("$BUILD_NUMBER")
               dockerImage.push('latest') 
             
         }
         }
         }
         }
-  
-  
+       stage('Prune Docker data') {
+        steps {
+        sh 'docker system prune -a --volumes -f'
+        sh 'docker image prune'
+        
+      }
     }
-}
+  stage("kubernetes deployment"){
+      sh 'kubectl apply -f client-app-deployment.yml'
+     }
+    }
+  }
          
     
 
