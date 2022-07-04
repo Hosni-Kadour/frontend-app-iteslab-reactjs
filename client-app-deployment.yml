@@ -15,7 +15,7 @@ spec:
       containers:
       - image: hosnikadour/frontend-app-iteslab:latest
         name: container1
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
 ---
 apiVersion: v1
 kind: Service
