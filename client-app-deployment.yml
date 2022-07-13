@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: client-app-deploy
+  name: client-app
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: client-app
@@ -14,13 +14,13 @@ spec:
     spec:
       containers:
       - image: hosnikadour/frontend-app-iteslab:latest
-        name: container1
-        imagePullPolicy: IfNotPresent
+        name: client-app
+        imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: client-service
+  name: client-app-service
 spec:
   selector:
     app: client-app
@@ -29,4 +29,3 @@ spec:
   - protocol: TCP
     port: 3000
     targetPort: 3000
-  
