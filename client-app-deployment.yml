@@ -16,16 +16,19 @@ spec:
       - image: hosnikadour/frontend-app-iteslab:latest
         name: client-app
         imagePullPolicy: Always
+      containerPort: 3000
+      restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: client-app-service
 spec:
-  selector:
+type: NodePort
+ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+      nodePort: 31000
+selector:
     app: client-app
-  ports:
-  - protocol: TCP
-    port: 3000
-    targetPort: 3000
-    type: NodePort
