@@ -34,7 +34,7 @@ pipeline {
        kubernetesDeploy(
          configs: 'client-app-deployment.yml', 
          kubeconfigId: 'KUBERNETES_CLUSTER_CONFIG',
-         enableConfigSubstitution: true
+         
         )
      }
 	 
