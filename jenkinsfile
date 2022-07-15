@@ -30,17 +30,25 @@ pipeline {
         
       }
     }
-     stage('Deploy App') {
-      steps {
-        script {
-          kubernetesDeploy(configs: "client-app-deployment.yml", kubeconfigId: "Mykubeconfig")
-        }
-      }
-    }
+    stage("Deploy To Kuberates Cluster"){
+       kubernetesDeploy(
+         configs: 'client-app-deployment.yml', 
+         kubeconfigId: 'KUBERNETES_CLUSTER_CONFIG',
+         enableConfigSubstitution: true
+        )
+     }
+	 
+	  /**
+      stage("Deploy To Kuberates Cluster"){
+        sh 'kubectl apply -f springBootMongo.yml'
+      } **/
+     
+}
+
 
   }
 
-}
+
          
     
 
