@@ -33,7 +33,7 @@ pipeline {
     stage('deploy to k8s') {
     steps {
         script {
-          kubernetesDeploy(configs: "client-app-deployment.yml", kubeconfigId: "KUBERNETES_CLUSTER_CONFIG")
+          kubernetesDeploy(configs: "client-app-deployment.yml", kubeconfigId: "KUBERNETES_CLUSTER_CONFIG" , enableConfigSubstitution: true,)
         }
     }
     }
