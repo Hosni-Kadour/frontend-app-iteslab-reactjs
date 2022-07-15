@@ -30,13 +30,15 @@ pipeline {
         
       }
     }
-    stage("Deploy To Kuberates Cluster"){
-       kubernetesDeploy(
-         configs: 'client-app-deployment.yml', 
-         kubeconfigId: 'KUBERNETES_CLUSTER_CONFIG',
-         
-        )
-     }
+    stage('deploy to k8s') {
+    steps {
+        script {
+          kubernetesDeploy(configs: "client-app-deployment.yml", kubeconfigId: "KUBERNETES_CLUSTER_CONFIG")
+        }
+    }
+    }
+        
+    
 	 
 	  /**
       stage("Deploy To Kuberates Cluster"){
@@ -47,6 +49,7 @@ pipeline {
 
 
   }
+
 
 
          
