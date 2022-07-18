@@ -30,20 +30,24 @@ pipeline {
         
       }
     }
-    stage('deploy to k8s') {
-    steps {
-        script {
-          kubernetesDeploy(configs: "client-app-deployment.yml", kubeconfigId: "KUBERNETES_CLUSTER_CONFIG" , enableConfigSubstitution: true,)
-        }
+    stage('deploy on k8s') {
+
+     steps {
+      sshagent(['k8s']) {
+      sh "scp -o stringHostkeyChecking=no client-app-deployment.yml ubuntu@54.160.210.32:/home/ubuntu"
+      script{
+        try{
+          sh "ssh ubuntu@54.160.210.32 kubectl apply  -f ."
+        }catch(error){
+           sh "ssh ubuntu@54.160.210.32 kubectl create  -f ."
+        }                                                    
+      }
+}
+
+     }
+
+
     }
-    }
-        
-    
-	 
-	  /**
-      stage("Deploy To Kuberates Cluster"){
-        sh 'kubectl apply -f client-app-deployment.yml'
-      } **/
      
 }
 
