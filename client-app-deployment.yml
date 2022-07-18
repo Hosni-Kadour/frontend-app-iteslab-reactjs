@@ -14,11 +14,10 @@ spec:
         app: client-app
     spec:
       containers:
-      - image: hosnikadour/frontend-app-iteslab:latest
-        name: client-app
-        imagePullPolicy: Always
-      containerPort: 3000
-      restartPolicy: Always
+      - name: client-app
+        image: "hosnikadour/frontend-app-iteslab:latest"
+        ports: 
+         - containerPort: 3000
 ---
 apiVersion: v1
 kind: Service
