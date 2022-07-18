@@ -30,6 +30,6 @@ selector:
     app: client-app
     type: LoadBalancer
     ports:
-    - name: http
+    - name: tcp
     targetPort: 3000
-    port: 80
+    port: 3000
