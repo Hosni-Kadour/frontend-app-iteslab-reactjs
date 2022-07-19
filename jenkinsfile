@@ -34,12 +34,12 @@ pipeline {
 
      steps {
       sshagent(['k8s']) {
-      sh "scp -o strictHostkeyChecking=no client-app-deployment.yml ubuntu@54.160.210.32:/home/ubuntu"
+      sh "scp -o strictHostkeyChecking=no client-app-deployment.yml ubuntu@34.224.102.100:/home/ubuntu"
       script{
         try{
-          sh "ssh ubuntu@54.160.210.32 kubectl apply  -f ."
+          sh "ssh ubuntu@34.224.102.100 kubectl apply  -f ."
         }catch(error){
-           sh "ssh ubuntu@54.160.210.32 kubectl create  -f ."
+           sh "ssh ubuntu@34.224.102.100 kubectl create  -f ."
         }                                                    
       }
 }
