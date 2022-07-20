@@ -36,4 +36,4 @@ spec:
       nodePort: 31200
   selector:
     app: react-app                   
-  type: LoadBalancer 
+  type: NodePort
