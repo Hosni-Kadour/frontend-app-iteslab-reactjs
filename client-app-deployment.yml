@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name:  deployment-app
-  namespace: default
   labels:
     app: react-app
 spec:
@@ -24,17 +23,20 @@ spec:
         image:  hosnikadour/frontend-app-iteslab:latest
         ports:
         - containerPort:  3000
+        env:
+            - name: PORT
+              value: "3000"
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: service-app
-  namespace: default
 spec:
-  type: NodePort
-  selector:
+   type: LoadBalancer
+   selector: 
     app: react-app
-  ports: 
+   ports: 
     - name: react-app
-      port: 3000
+      port: 80
       targetPort: 3000
+   
