@@ -31,10 +31,10 @@ metadata:
   name: service-app
   namespace: default
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: react-app
   ports: 
     - name: react-app
       port: 3000
-      targetPort: 3000
+      targetPort: 80
