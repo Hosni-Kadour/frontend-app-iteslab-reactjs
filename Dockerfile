@@ -1,4 +1,4 @@
-FROM node:16 as node-build
+FROM node:16 
 
 
 WORKDIR /app
@@ -10,7 +10,6 @@ RUN npm install --silent
 
 COPY . .
 
-RUN npm run build --silent
 
 
 
