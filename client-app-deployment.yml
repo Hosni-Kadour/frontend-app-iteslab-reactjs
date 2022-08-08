@@ -32,7 +32,8 @@ metadata:
 spec:
   selector:
     app: react-app
+    type: LoadBalancer
   ports:
-  - port: 80
-    targetPort: 3000
-  type: NodePort
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
