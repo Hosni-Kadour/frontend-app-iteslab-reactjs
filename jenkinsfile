@@ -37,9 +37,9 @@ pipeline {
       sh "scp -o strictHostkeyChecking=no client-depl.yml ubuntu@54.226.88.3:/home/ubuntu"
       script{
         try{
-          sh "ssh ubuntu@54.226.88.3 kubectl apply  -f ."
+          sh "ssh ubuntu@54.226.88.3 kubectl apply  -f client-depl.yml "
         }catch(error){
-           sh "ssh ubuntu@54.226.88.3 kubectl create  -f ."
+           sh "ssh ubuntu@54.226.88.3 kubectl create  -f client-depl.yml"
         }                                                    
       }
 }
