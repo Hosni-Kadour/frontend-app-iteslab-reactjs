@@ -23,11 +23,12 @@ kind: Service
 metadata:
   name: client-srv
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: client
   ports:
-    - port: 3000
-      targetPort: 3000
+     - port: 3000
+       targetPort: 3000
+       nodePort: 30001
 
 
