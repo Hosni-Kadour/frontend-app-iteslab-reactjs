@@ -30,30 +30,8 @@ pipeline {
         
       }
     }
-    stage('deploy on k8s') {
-
-     steps {
-      sshagent(['k8s']) {
-      sh "scp -o strictHostkeyChecking=no client-depl.yml ubuntu@54.83.145.105:/home/ubuntu"
-      script{
-        try{
-          sh "ssh ubuntu@54.83.145.105 kubectl apply  -f client-depl.yml "
-        }catch(error){
-           sh "ssh ubuntu@54.83.145.105 kubectl create  -f client-depl.yml"
-        }                                                    
-      }
-}
-
-     }
-
-
-    }
-     
-}
-
-
   }
-
+}
 
 
          
