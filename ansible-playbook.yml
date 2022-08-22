@@ -19,4 +19,6 @@
 # Make sure to change the image name with your personal dockerhub account and reposiroty 
   - name: push image to dockerhub
     command: docker push hosnikadour/frontend-app-iteslab
+  - name: run container
+    command: docker run -d --restart=always --name nodejs-app -p 6000:3000 hosnikadour/frontend-app-iteslab
  
