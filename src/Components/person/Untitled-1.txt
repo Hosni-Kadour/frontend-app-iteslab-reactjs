@@ -1,0 +1,7 @@
+changmement des localhost:4000 >> env.backendurl
+build image docker  >> push it >> use it in client-deploy
+dans client-deploy.yml ajout var d'env lel backend :backendurl =  server-srv.default.svc.cluster.local
+
+create svc de type :    - cluster ip (pour que le front ya7ki ma3 el back ) ykpoun esmha server-srv
+                        - 2 services wa7ed lel back wwa7ed lel front 
+tfasa5 service monog w deploy 
