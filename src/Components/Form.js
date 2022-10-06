@@ -136,7 +136,7 @@ function Form() {
           >
             <Alert severity="success">
               <AlertTitle></AlertTitle>
-              Your update was succed — <strong>check it out iteslab!</strong>
+              Your update was succed — <strong>welcome to iteslab CompusElmanar!</strong>
             </Alert>
           </Snackbar>
         )}
